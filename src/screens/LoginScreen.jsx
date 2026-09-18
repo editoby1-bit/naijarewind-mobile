@@ -46,6 +46,10 @@ export default function LoginScreen({ navigation }) {
 
       <Button title="Log In" onPress={handleLogin} loading={loading} disabled={!email || !password} style={{ marginTop: spacing.sm }} />
 
+      <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')} style={{ marginTop: spacing.md }}>
+        <Text style={styles.forgotLink}>Forgot password?</Text>
+      </TouchableOpacity>
+
       <TouchableOpacity onPress={() => navigation.navigate('Signup')} style={{ marginTop: spacing.lg }}>
         <Text style={styles.link}>New here? Create an account</Text>
       </TouchableOpacity>
@@ -63,4 +67,5 @@ const styles = StyleSheet.create({
   },
   error: { color: colors.red, fontSize: fontSizes.sm, marginBottom: spacing.sm, textAlign: 'center' },
   link: { color: colors.gold, textAlign: 'center', fontSize: fontSizes.sm },
+  forgotLink: { color: colors.text3, textAlign: 'center', fontSize: fontSizes.xs },
 })

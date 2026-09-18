@@ -9,6 +9,9 @@ import NameThatActorScreen from '../screens/games/NameThatActorScreen'
 import MatchFacesScreen from '../screens/games/MatchFacesScreen'
 import QuoteCardsScreen from '../screens/games/QuoteCardsScreen'
 import ChallengeScoreboardScreen from '../screens/games/ChallengeScoreboardScreen'
+import SearchScreen from '../screens/SearchScreen'
+import TermsScreen from '../screens/TermsScreen'
+import PrivacyScreen from '../screens/PrivacyScreen'
 
 const Stack = createNativeStackNavigator()
 
@@ -24,6 +27,9 @@ export default function MainStack() {
       <Stack.Screen name="MatchFaces" component={MatchFacesScreen} options={{ presentation: 'card' }} />
       <Stack.Screen name="QuoteCards" component={QuoteCardsScreen} options={{ presentation: 'card' }} />
       <Stack.Screen name="ChallengeScoreboard" component={ChallengeScoreboardScreen} options={{ presentation: 'card' }} />
+      <Stack.Screen name="Search" component={SearchScreen} options={{ presentation: 'card' }} />
+      <Stack.Screen name="Terms" component={TermsScreen} options={{ presentation: 'card' }} />
+      <Stack.Screen name="Privacy" component={PrivacyScreen} options={{ presentation: 'card' }} />
     </Stack.Navigator>
   )
 }

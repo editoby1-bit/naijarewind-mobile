@@ -1,6 +1,6 @@
 // src/screens/BrowseScreen.jsx
 import { useEffect, useState } from 'react'
-import { View, Text, Image, StyleSheet, ScrollView, FlatList, RefreshControl } from 'react-native'
+import { View, Text, Image, StyleSheet, ScrollView, FlatList, RefreshControl, TouchableOpacity } from 'react-native'
 import { supabase } from '../lib/supabase'
 import { useActiveProfile } from '../lib/ProfileContext'
 import { colors, spacing, fontSizes, radii } from '../theme'
@@ -52,7 +52,12 @@ export default function BrowseScreen({ navigation }) {
 
   return (
     <ScrollView style={styles.container} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={colors.gold} />}>
-      <Text style={styles.logo}>Naija<Text style={{ color: colors.gold }}>Rewind</Text></Text>
+      <View style={styles.headerRow}>
+        <Text style={styles.logo}>Naija<Text style={{ color: colors.gold }}>Rewind</Text></Text>
+        <TouchableOpacity onPress={() => navigation.navigate('Search')} style={styles.searchBtn}>
+          <Text style={styles.searchIcon}>🔍</Text>
+        </TouchableOpacity>
+      </View>
 
       {movies === null && <Text style={styles.loading}>Loading…</Text>}
 
@@ -120,7 +125,10 @@ export default function BrowseScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: colors.bg, paddingTop: spacing.xxl },
-  logo: { fontSize: fontSizes.lg, fontWeight: '900', color: colors.text, paddingHorizontal: spacing.lg, marginBottom: spacing.lg },
+  headerRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: spacing.lg, marginBottom: spacing.lg },
+  logo: { fontSize: fontSizes.lg, fontWeight: '900', color: colors.text },
+  searchBtn: { padding: 6 },
+  searchIcon: { fontSize: 20 },
   loading: { color: colors.text3, paddingHorizontal: spacing.lg },
   empty: { paddingHorizontal: spacing.lg, paddingTop: spacing.xl, alignItems: 'center', marginBottom: spacing.lg },
   emptyTitle: { color: colors.gold, fontSize: fontSizes.lg, fontWeight: '900', marginBottom: spacing.sm, textAlign: 'center' },

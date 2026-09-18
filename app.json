@@ -1,71 +1,44 @@
-
 {
-
   "expo": {
-
     "name": "NaijaRewind",
-
     "slug": "naijarewind-mobile",
-
     "version": "1.0.0",
-
     "orientation": "portrait",
-
     "icon": "./assets/icon.png",
-
     "userInterfaceStyle": "dark",
-
     "backgroundColor": "#080808",
-
     "splash": {
-
       "image": "./assets/splash.png",
-
       "resizeMode": "contain",
-
       "backgroundColor": "#080808"
-
     },
-
-    "assetBundlePatterns": ["**/*"],
-
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
-
       "supportsTablet": true,
-
       "bundleIdentifier": "com.naijarewind.app",
-
-      "infoPlist": { "ITSAppUsesNonExemptEncryption": false }
-
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
-
     "android": {
-
       "adaptiveIcon": {
-
         "foregroundImage": "./assets/adaptive-icon.png",
-
         "backgroundColor": "#080808"
-
       },
-
       "package": "com.naijarewind.app"
-
     },
-
-    "web": { "favicon": "./assets/favicon.png" },
-
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
     "extra": {
-
       "apiBaseUrl": "https://nollyvault.vercel.app",
-
       "supabaseUrl": "https://nuinigzqrwmpxhiivuzj.supabase.co",
-
-      "supabaseAnonKey": "sb_publishable_2m4XF0eqJP_Qn1CriUcCbg_5S0jPeWR"
-
+      "supabaseAnonKey": "sb_publishable_2m4XF0eqJP_Qn1CriUcCbg_5S0jPeWR",
+      "eas": {
+        "projectId": "57a7e256-7b51-4b5b-abdf-218d7f67bbd9"
+      }
     }
-
   }
-
 }
-

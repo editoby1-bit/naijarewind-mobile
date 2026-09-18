@@ -1,13 +1,13 @@
 // src/screens/AccountScreen.jsx
 import { useEffect, useState } from 'react'
-import { View, Text, StyleSheet, ScrollView } from 'react-native'
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native'
 import { supabase } from '../lib/supabase'
 import { useAuth } from '../lib/AuthContext'
 import { useActiveProfile } from '../lib/ProfileContext'
 import { colors, spacing, fontSizes, radii } from '../theme'
 import Button from '../components/Button'
 
-export default function AccountScreen() {
+export default function AccountScreen({ navigation }) {
   const { session } = useAuth()
   const { setActiveProfile } = useActiveProfile()
   const [user, setUser] = useState(null)
@@ -44,6 +44,16 @@ export default function AccountScreen() {
 
       <Button title="Switch Profile" variant="outline" onPress={() => setActiveProfile(null)} style={{ marginTop: spacing.lg }} />
       <Button title="Sign Out" variant="outline" onPress={() => supabase.auth.signOut()} style={{ marginTop: spacing.sm }} />
+
+      <View style={styles.legalRow}>
+        <TouchableOpacity onPress={() => navigation.navigate('Terms')}>
+          <Text style={styles.legalLink}>Terms of Service</Text>
+        </TouchableOpacity>
+        <Text style={styles.legalDot}>·</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('Privacy')}>
+          <Text style={styles.legalLink}>Privacy Policy</Text>
+        </TouchableOpacity>
+      </View>
     </ScrollView>
   )
 }
@@ -57,4 +67,7 @@ const styles = StyleSheet.create({
   row: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
   badge: { paddingHorizontal: spacing.sm, paddingVertical: 4, borderRadius: radii.sm },
   subscribeNote: { color: colors.text3, fontSize: fontSizes.sm, marginTop: spacing.md, lineHeight: 20 },
+  legalRow: { flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: spacing.xl, marginBottom: spacing.lg, gap: spacing.sm },
+  legalLink: { color: colors.text3, fontSize: fontSizes.xs },
+  legalDot: { color: colors.text4, fontSize: fontSizes.xs },
 })
